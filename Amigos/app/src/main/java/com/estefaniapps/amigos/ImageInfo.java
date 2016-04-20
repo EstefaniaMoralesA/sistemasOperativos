@@ -7,11 +7,11 @@ import android.widget.ImageView;
  */
 public class ImageInfo {
 
-    private String url;
+    private Amigo amigo;
     private ImageView view;
 
-    public ImageInfo(String url, ImageView view){
-        this.url = url;
+    public ImageInfo(Amigo amigo, ImageView view){
+        this.amigo = amigo;
         this.view = view;
     }
 
@@ -19,7 +19,7 @@ public class ImageInfo {
         return view;
     }
 
-    public String getUrl() {
-        return url;
+    public Amigo getAmigo() {
+        return amigo;
     }
 }

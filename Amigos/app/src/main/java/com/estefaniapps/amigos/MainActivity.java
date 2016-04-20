@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Log.e("Main", "Hola");
+
         ImageButton recibir_nuevos = (ImageButton) findViewById(R.id.recibir_nuevos);
         recibir_nuevos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,13 +38,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Amigos amigos = new Amigos();
-        LayoutInflater inflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rootView = inflater.inflate(R.layout.content_main,null);
-        RelativeLayout layout = (RelativeLayout)rootView.findViewById(R.id.main);
-
-        View rootView2 = inflater.inflate(R.layout.fragment_main, null);
-
-        layout.addView(rootView2);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.main, amigos);
+        fragmentTransaction.commit();
     }
 
 

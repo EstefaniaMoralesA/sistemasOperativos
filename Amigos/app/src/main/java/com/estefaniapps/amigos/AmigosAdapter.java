@@ -37,11 +37,16 @@ public class AmigosAdapter extends ArrayAdapter<Amigo> {
 
             TextView nombre = (TextView) rootView.findViewById(R.id.amigo_nombre);
             ImageView foto = (ImageView) rootView.findViewById(R.id.amigo_foto);
-
-            ImageInfo imageInfo = new ImageInfo(amigo.getFoto(), foto);
             nombre.setText(amigo.getNombre());
 
-            new DownloadImagesTask().execute(imageInfo);
+            if(amigo.getRoundedFoto() == null){
+                ImageInfo info = new ImageInfo(amigo, foto);
+                new DownloadImagesTask().execute(info);
+            }
+            else{
+                foto.setImageDrawable(amigo.getRoundedFoto());
+            }
+
         }
         return rootView;
     }
