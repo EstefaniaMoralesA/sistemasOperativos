@@ -20,7 +20,6 @@ public class DownloadImagesTask extends AsyncTask<ImageInfo, Void, RoundedBitmap
 
     @Override
     protected RoundedBitmapDrawable doInBackground(ImageInfo... images) {
-        Log.e("Download", "background");
         this.imageView = images[0].getImageView();
         this.amigo = images[0].getAmigo();
         return download_Image(amigo.getFoto());
@@ -28,13 +27,11 @@ public class DownloadImagesTask extends AsyncTask<ImageInfo, Void, RoundedBitmap
 
     @Override
     protected void onPostExecute(RoundedBitmapDrawable result) {
-        Log.e("Download", "post");
         amigo.setRoundedFoto(result);
         imageView.setImageDrawable(result);
     }
 
     private RoundedBitmapDrawable download_Image(String url) {
-        Log.e("Download", "download_image");
         Bitmap bmp =null;
         try{
             URL ulrn = new URL(url);
@@ -43,9 +40,6 @@ public class DownloadImagesTask extends AsyncTask<ImageInfo, Void, RoundedBitmap
             bmp = BitmapFactory.decodeStream(is);
             if (null != bmp)
                 return getRoundedFoto(bmp);
-            else{
-                Log.e("Download", "null");
-            }
 
         }catch(Exception e){
             Log.e("Exception", e.getMessage());

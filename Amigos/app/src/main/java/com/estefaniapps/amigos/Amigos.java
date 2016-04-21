@@ -16,33 +16,24 @@ public class Amigos extends android.app.Fragment {
 
     private ArrayList<Amigo> amigos = new ArrayList<>();
     private AmigosAdapter a_adapter;
+    private View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Log.e("amigos: ", "Amigos 1");
-
-
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        amigos.clear();
-        amigos.add(new Amigo("Juan Lopez", "http://pickaface.net/avatar/pickaface51f38ca9987be.png"));
-        amigos.add(new Amigo("Pedro Sanchez", "http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png"));
-        amigos.add(new Amigo("Estefania Morales", "http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png"));
-        amigos.add(new Amigo("Juan Lopez", "http://pickaface.net/avatar/pickaface51f38ca9987be.png"));
-        amigos.add(new Amigo("Pedro Sanchez", "http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png"));
-        amigos.add(new Amigo("Estefania Morales", "http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png"));
-        amigos.add(new Amigo("Juan Lopez", "http://pickaface.net/avatar/pickaface51f38ca9987be.png"));
-        amigos.add(new Amigo("Pedro Sanchez", "http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png"));
-        amigos.add(new Amigo("Estefania Morales", "http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png"));
-        amigos.add(new Amigo("Juan Lopez", "http://pickaface.net/avatar/pickaface51f38ca9987be.png"));
-        amigos.add(new Amigo("Pedro Sanchez", "http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png"));
-        amigos.add(new Amigo("Estefania Morales", "http://www.exclutips.com/wp-content/uploads/2015/08/wordpress-custom-user-avatar.png"));
+        new GetAmigos_AsyncTask(this).execute("http://www.unmismocorazon.com/webservice/controller.php", "testConnection");
 
+        view = rootView;
+        return rootView;
+    }
 
+    public void populateListView(ArrayList<Amigo> arrayList){
+        this.amigos = arrayList;
         a_adapter = new AmigosAdapter(getActivity(), R.layout.list_item_amigos, amigos);
-        ListView lv = (ListView) rootView.findViewById(R.id.listView_amigos);
+        ListView lv = (ListView) view.findViewById(R.id.listView_amigos);
         lv.setAdapter(a_adapter);
 
 
@@ -55,10 +46,7 @@ public class Amigos extends android.app.Fragment {
                 return false;
             }
         });
-
-        Log.e("amigos: ", "Amigos 2");
-
-        return rootView;
     }
+
 
 }

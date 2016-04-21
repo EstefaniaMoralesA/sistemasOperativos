@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Log.e("Main", "Hola");
-
         ImageButton recibir_nuevos = (ImageButton) findViewById(R.id.recibir_nuevos);
         recibir_nuevos.setOnClickListener(new View.OnClickListener() {
             @Override
