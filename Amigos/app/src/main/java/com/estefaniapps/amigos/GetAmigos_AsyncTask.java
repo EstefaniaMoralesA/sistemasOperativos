@@ -33,15 +33,7 @@ public class GetAmigos_AsyncTask extends AsyncTask<String, Void, String> {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(15000);
             conn.setConnectTimeout(15000);
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
-
-            OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            //writer.write("funcion="+params[1]);
-            writer.flush();
-            writer.close();
-            os.close();
+            conn.setRequestMethod("GET");
 
             int responseCode = conn.getResponseCode();
 

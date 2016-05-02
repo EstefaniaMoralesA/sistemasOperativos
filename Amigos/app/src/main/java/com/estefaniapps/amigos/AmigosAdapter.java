@@ -2,6 +2,7 @@ package com.estefaniapps.amigos;
 
 import android.content.Context;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,7 @@ public class AmigosAdapter extends ArrayAdapter<Amigo> {
 
             if(amigo.getRoundedFoto() == null){
                 ImageInfo info = new ImageInfo(amigo, foto);
-                new DownloadImagesTask().execute(info);
+                new DownloadImagesTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, info);
             }
             else{
                 foto.setImageDrawable(amigo.getRoundedFoto());

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import java.util.ArrayList;
 
@@ -23,9 +24,7 @@ public class Amigos extends android.app.Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-        new GetAmigos_AsyncTask(this).execute("http://www.unmismocorazon.com/webservice/controller.php", "testConnection");
-
+        ((MainActivity) getActivity()).setListener(this);
         view = rootView;
         return rootView;
     }
