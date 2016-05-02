@@ -19,7 +19,8 @@ import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
 
-    public ImageButton recibir_nuevos;
+    private ImageButton recibir_nuevos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         recibir_nuevos = (ImageButton) findViewById(R.id.recibir_nuevos);
-
 
         Amigos amigos = new Amigos();
         FragmentManager fragmentManager = getFragmentManager();
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         recibir_nuevos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                amigos.getLoadingPanel().setVisibility(View.VISIBLE);
                 new GetAmigos_AsyncTask(amigos).execute("http://192.168.1.76:8080/FreendsWS/FriendsService.jsp?user=2");
             }
         });
