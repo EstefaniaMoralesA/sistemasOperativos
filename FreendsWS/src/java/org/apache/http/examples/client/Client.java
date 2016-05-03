@@ -53,11 +53,11 @@ public class Client{
             u = u%10 + 1;
         }
         
-//        String myHttp = "http://10.50.121.219:8080/FreendsWS/FriendsService.jsp?user=";
+//        String myHttp = "http://localhost:8080/FreendsWS/FriendsService.jsp?user=";
 //        myHttp = myHttp + u;
         
         try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
-            HttpGet httpget = new HttpGet("http://10.50.121.219:8080/FreendsWS/FriendsService.jsp?user=2");
+            HttpGet httpget = new HttpGet("http://localhost/FreendsWS/FriendsService.jsp?user=2");
 
             System.out.println("Executing request " + httpget.getRequestLine());
 
