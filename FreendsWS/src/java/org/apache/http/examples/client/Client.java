@@ -57,7 +57,7 @@ public class Client{
 //        myHttp = myHttp + u;
         
         try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
-            HttpGet httpget = new HttpGet("http://localhost/FreendsWS/FriendsService.jsp?user=2");
+            HttpGet httpget = new HttpGet("http://localhost:8080/FreendsWS/FriendsService.jsp?user=2");
 
             System.out.println("Executing request " + httpget.getRequestLine());
 

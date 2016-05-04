@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 
 public class Tester extends Thread{
-    int n=100;
+    int n=10;
     long[] times = new long[n];
     long time0 = 0;
     long time1 = 0;
