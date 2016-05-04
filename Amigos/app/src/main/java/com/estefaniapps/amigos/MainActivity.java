@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 amigos.getLoadingPanel().setVisibility(View.VISIBLE);
-                new GetAmigos_AsyncTask(amigos).execute("http://192.168.1.76:8080/FreendsWS/FriendsService.jsp?user=2");
+                new GetAmigos_AsyncTask(amigos).execute("http://localhost:8080/FreendsWS/FriendsService.jsp?user=2");
             }
         });
     }
